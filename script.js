@@ -115,7 +115,7 @@ let products = [
         category: 'Game Currency',
         platform: 'Roblox',
            description: 'Buy any custom amount of Robux at Rs. 2 per Robux.',
-    discount: 15,
+    discount: 5,
     hasSubProducts: true, // keep true so button shows
     subProducts: [], // leave empty
     inStock: true
@@ -463,7 +463,7 @@ function addCustomRobux() {
         return;
     }
 
-    const price = robuxAmount * 2;
+    const price = robuxAmount * 1.9;
     const itemId = `robux-${robuxAmount}`;
 
     const existingItem = cart.find(item => item.id === itemId);
