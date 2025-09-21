@@ -120,6 +120,35 @@ let products = [
     subProducts: [], // leave empty
     inStock: true
 },
+{
+    id: '9',
+    name: 'Netflix Account',
+    basePrice: 399,
+    image: 'https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg', // Example Netflix logo
+    category: 'Streaming Service',
+    platform: 'Netflix',
+    description: 'Netflix subscription accounts available as shared or personal. Choose the plan that suits you.',
+    discount: 0,
+    hasSubProducts: true,
+    subProducts: [
+        { id: '9-1', name: 'Shared Account', price: 399, description: 'Shared Netflix Account Plan' },
+        { id: '9-2', name: 'Personal Account', price: 499, description: 'Personal Netflix Account Plan' }
+    ],
+    inStock: true
+},
+      {
+    id: '10',
+    name: 'Among Us',
+    basePrice: 299,
+    image: 'https://upload.wikimedia.org/wikipedia/en/f/f9/Among_Us_cover_art.jpg', // Official Among Us cover art
+    category: 'Game',
+    platform: 'Epic Games',
+    description: 'Among Us - The popular social deduction game available via Epic Games.',
+    discount: 0,
+    hasSubProducts: false,
+    inStock: true
+},
+
 
 
 ];
