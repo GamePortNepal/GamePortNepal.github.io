@@ -1,7 +1,44 @@
 // Advanced Product System with Sub-Products & Admin Management
 let products = [
-    {
+      {
         id: '1',
+        name: 'Minecraft (Java + Bedrock)',
+        basePrice: 4499,
+        image: 'https://tse3.mm.bing.net/th/id/OIP.KO2HbRC_h67s9ACdI4VyzAHaDu?r=0&cb=thfvnext&rs=1&pid=ImgDetMain&o=7&rm=3',
+        category: 'Redeem Code',
+        platform: 'PC/Mobile',
+        description: 'Brand New Minecraft Redeem Code with Java + Bedrock editions included.',
+        discount: 0,
+        hasSubProducts: false,
+        inStock: true
+    },
+     {
+        id: '2',
+        name: 'Menace Cape',
+        basePrice: 250,
+        image: 'https://minecraft.wiki/images/Menace_cape_artwork.png?0f97f&format=original',
+        category: 'Cosmetic',
+        platform: 'Minecraft',
+        description: 'Exclusive Menace Cape for your Minecraft character.',
+        discount: 0,
+        hasSubProducts: false,
+        inStock: true
+    },
+ {
+        id: '3',
+        name: 'Home Cape',
+        basePrice: 1000,
+        image: 'https://s.namemc.com/3d/skin/body.png?id=12b92a9206470fe2&cape=afc3ba389452cbb1&theta=210&width=256&height=256',
+        category: 'Cosmetic',
+        platform: 'Minecraft',
+        description: 'Exclusive Menace Cape for your Minecraft character.',
+        discount: 50,
+        hasSubProducts: false,
+        inStock: true
+    },
+
+    {
+        id: '4',
         name: 'Free Fire Diamonds',
         basePrice: 90,
         image: 'https://www.talkesport.com/wp-content/uploads/free-fire-free-diamonds.webp',
@@ -20,7 +57,7 @@ let products = [
         inStock: true
     },
     {
-        id: '2',
+        id: '5',
         name: 'PUBG UC',
         basePrice: 150,
         image: 'https://th.bing.com/th/id/OIP.f1nTlu-kk76qdgoJwZJXPwHaEK?w=290&h=180&c=7&r=0&o=7&pid=1.7&rm=3',
@@ -38,20 +75,9 @@ let products = [
         ],
         inStock: true
     },
+  
     {
-        id: '3',
-        name: 'Minecraft (Java + Bedrock)',
-        basePrice: 4499,
-        image: 'https://tse3.mm.bing.net/th/id/OIP.KO2HbRC_h67s9ACdI4VyzAHaDu?r=0&cb=thfvnext&rs=1&pid=ImgDetMain&o=7&rm=3',
-        category: 'Redeem Code',
-        platform: 'PC/Mobile',
-        description: 'Brand New Minecraft Redeem Code with Java + Bedrock editions included.',
-        discount: 0,
-        hasSubProducts: false,
-        inStock: true
-    },
-    {
-        id: '4',
+        id: '6',
         name: 'Discord Nitro',
         basePrice: 440,
         image: 'https://tse4.mm.bing.net/th/id/OIP.htlr6BrX9NbKhKFN6uQabgHaHa?r=0&cb=thfvnext&rs=1&pid=ImgDetMain&o=7&rm=3',
@@ -67,7 +93,7 @@ let products = [
         inStock: true
     },
     {
-        id: '5',
+        id: '7',
         name: 'Roblox Robux',
         basePrice: 720,
         image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Robux_2019_Logo_gold.svg/1024px-Robux_2019_Logo_gold.svg.png?20201227051146',
@@ -81,31 +107,7 @@ let products = [
         ],
         inStock: true
     },
-    {
-        id: '6',
-        name: 'Menace Cape',
-        basePrice: 250,
-        image: 'https://minecraft.wiki/images/Menace_cape_artwork.png?0f97f&format=original',
-        category: 'Cosmetic',
-        platform: 'Minecraft',
-        description: 'Exclusive Menace Cape for your Minecraft character.',
-        discount: 0,
-        hasSubProducts: false,
-        inStock: true
-    },
- {
-        id: '7',
-        name: 'Home Cape',
-        basePrice: 1000,
-        image: 'https://s.namemc.com/3d/skin/body.png?id=12b92a9206470fe2&cape=afc3ba389452cbb1&theta=210&width=256&height=256',
-        category: 'Cosmetic',
-        platform: 'Minecraft',
-        description: 'Exclusive Menace Cape for your Minecraft character.',
-        discount: 50,
-        hasSubProducts: false,
-        inStock: true
-    },
-
+   
 
 
 ];
