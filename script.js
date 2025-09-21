@@ -115,7 +115,7 @@ let products = [
         category: 'Game Currency',
         platform: 'Roblox',
            description: 'Buy any custom amount of Robux at Rs. 2 per Robux.',
-    discount: 0,
+    discount: 15,
     hasSubProducts: true, // keep true so button shows
     subProducts: [], // leave empty
     inStock: true
