@@ -107,7 +107,19 @@ let products = [
         ],
         inStock: true
     },
-   
+    {
+        id: '8',
+        name: 'Roblox Gamepass',
+        basePrice: 720,
+        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Robux_2019_Logo_gold.svg/1024px-Robux_2019_Logo_gold.svg.png?20201227051146',
+        category: 'Game Currency',
+        platform: 'Roblox',
+           description: 'Buy any custom amount of Robux at Rs. 1.7 per Robux.',
+    discount: 0,
+    hasSubProducts: true, // keep true so button shows
+    subProducts: [], // leave empty
+    inStock: true
+},
 
 
 ];
@@ -500,7 +512,11 @@ function createProductCard(product) {
             <img src="${product.image}" alt="${product.name}">
             ${product.discount > 0 ? `<div class="discount-overlay">${product.discount}% OFF</div>` : ''}
             <div class="product-overlay">
-                ${product.hasSubProducts ? `
+                ${product.id === '5' ? `
+                    <button class="btn btn-primary" onclick="addCustomRobux()">
+                        <i class="fas fa-plus"></i> Buy Custom Robux
+                    </button>
+                ` : product.hasSubProducts ? `
                     <button class="btn btn-primary" onclick="showSubProducts('${product.id}')">
                         <i class="fas fa-list"></i>
                         View Options
@@ -536,6 +552,7 @@ function createProductCard(product) {
     `;
     
     return card;
+
 }
 
 function showSubProducts(productId) {
