@@ -110,7 +110,7 @@ let products = [
     {
         id: '8',
         name: 'Roblox Gamepass',
-        basePrice: 720,
+        basePrice: 0,
         image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Robux_2019_Logo_gold.svg/1024px-Robux_2019_Logo_gold.svg.png?20201227051146',
         category: 'Game Currency',
         platform: 'Roblox',
