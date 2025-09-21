@@ -43,7 +43,7 @@ let products = [
         name: 'Minecraft (Java + Bedrock)',
         basePrice: 4499,
         image: 'https://tse3.mm.bing.net/th/id/OIP.KO2HbRC_h67s9ACdI4VyzAHaDu?r=0&cb=thfvnext&rs=1&pid=ImgDetMain&o=7&rm=3',
-        category: 'Game Account',
+        category: 'Redeem Code',
         platform: 'PC/Mobile',
         description: 'Brand New Minecraft Redeem Code with Java + Bedrock editions included.',
         discount: 0,
