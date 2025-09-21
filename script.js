@@ -512,7 +512,7 @@ function createProductCard(product) {
             <img src="${product.image}" alt="${product.name}">
             ${product.discount > 0 ? `<div class="discount-overlay">${product.discount}% OFF</div>` : ''}
             <div class="product-overlay">
-                ${product.id === '5' ? `
+                ${product.id === '8' ? `
                     <button class="btn btn-primary" onclick="addCustomRobux()">
                         <i class="fas fa-plus"></i> Buy Custom Robux
                     </button>
