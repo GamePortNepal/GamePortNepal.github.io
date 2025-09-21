@@ -114,7 +114,7 @@ let products = [
         image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Robux_2019_Logo_gold.svg/1024px-Robux_2019_Logo_gold.svg.png?20201227051146',
         category: 'Game Currency',
         platform: 'Roblox',
-           description: 'Buy any custom amount of Robux at Rs. 1.7 per Robux.',
+           description: 'Buy any custom amount of Robux at Rs. 2 per Robux.',
     discount: 0,
     hasSubProducts: true, // keep true so button shows
     subProducts: [], // leave empty
@@ -463,7 +463,7 @@ function addCustomRobux() {
         return;
     }
 
-    const price = robuxAmount * 1.7;
+    const price = robuxAmount * 2;
     const itemId = `robux-${robuxAmount}`;
 
     const existingItem = cart.find(item => item.id === itemId);
