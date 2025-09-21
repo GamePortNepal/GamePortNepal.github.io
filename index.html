@@ -22,6 +22,10 @@
                 </div>
                 
                 <div class="header-buttons">
+                    <button class="btn btn-outline" id="admin-btn" onclick="showAdminLogin()">
+                        <i class="fas fa-user-shield"></i>
+                        Admin
+                    </button>
                     <a href="mailto:gameportnepal@gmail.com" class="btn btn-outline">
                         <i class="fas fa-envelope"></i>
                         Contact
@@ -187,6 +191,106 @@
             </div>
         </div>
     </footer>
+
+    <!-- Admin Login Modal -->
+    <div id="admin-login-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4>Admin Login</h4>
+                <span class="close" onclick="closeAdminLogin()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="admin-login-form">
+                    <div class="form-group">
+                        <label for="admin-email">Admin Email</label>
+                        <input type="email" id="admin-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="admin-password">Password</label>
+                        <input type="password" id="admin-password" required>
+                    </div>
+                    <div id="admin-error" class="error-message" style="display: none;"></div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary btn-full" onclick="adminLogin(event)">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Login as Admin
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Panel Modal -->
+    <div id="admin-panel-modal" class="modal admin-panel-modal">
+        <div class="modal-content admin-panel">
+            <div class="modal-header">
+                <h4>🛡️ Admin Panel - GamePort Nepal</h4>
+                <div>
+                    <button class="btn btn-outline btn-sm" onclick="logoutAdmin()">Logout</button>
+                    <span class="close" onclick="closeAdminPanel()">&times;</span>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="admin-tabs">
+                    <button class="tab-btn active" onclick="showTab('products')">Manage Products</button>
+                    <button class="tab-btn" onclick="showTab('add-product')">Add New Product</button>
+                </div>
+                
+                <!-- Products Management Tab -->
+                <div id="products-tab" class="tab-content active">
+                    <div class="admin-products-grid" id="admin-products-list">
+                        <!-- Products will be loaded here -->
+                    </div>
+                </div>
+                
+                <!-- Add Product Tab -->
+                <div id="add-product-tab" class="tab-content">
+                    <form id="add-product-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="product-name">Product Name</label>
+                                <input type="text" id="product-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="product-price">Price (Rs.)</label>
+                                <input type="number" id="product-price" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="product-category">Category</label>
+                                <select id="product-category" required>
+                                    <option value="">Select Category</option>
+                                    <option value="Game Currency">Game Currency</option>
+                                    <option value="Game Pass">Game Pass</option>
+                                    <option value="Subscription">Subscription</option>
+                                    <option value="Game Account">Game Account</option>
+                                    <option value="Cosmetic">Cosmetic</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="product-platform">Platform</label>
+                                <input type="text" id="product-platform" placeholder="e.g., Free Fire, PUBG, Discord" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="product-image">Image URL</label>
+                            <input type="url" id="product-image" placeholder="https://example.com/image.jpg" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="product-description">Description</label>
+                            <textarea id="product-description" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-plus"></i>
+                            Add Product
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
