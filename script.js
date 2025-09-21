@@ -456,6 +456,34 @@ function setDiscount(productId) {
         }
     }
 }
+function addCustomRobux() {
+    const robuxAmount = parseInt(prompt("Enter the amount of Robux you want:"));
+    if (!robuxAmount || robuxAmount <= 0) {
+        showNotification("Please enter a valid number!", "error");
+        return;
+    }
+
+    const price = robuxAmount * 1.7;
+    const itemId = `robux-${robuxAmount}`;
+
+    const existingItem = cart.find(item => item.id === itemId);
+    if (existingItem) {
+        existingItem.quantity += 1;
+    } else {
+        cart.push({
+            id: itemId,
+            name: `${robuxAmount} Robux`,
+            price: price,
+            image: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Robux_2019_Logo_gold.svg/1024px-Robux_2019_Logo_gold.svg.png?20201227051146",
+            quantity: 1,
+            parentProduct: "Roblox Robux"
+        });
+    }
+
+    updateCartCount();
+    showNotification(`${robuxAmount} Robux added to cart!`, "success");
+}
+
 
 function deleteProduct(productId) {
     const product = products.find(p => p.id === productId);
