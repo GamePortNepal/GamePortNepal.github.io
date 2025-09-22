@@ -110,7 +110,7 @@ let products = [
     {
         id: '8',
         name: 'Roblox Gamepass',
-        basePrice: 20,
+        basePrice: 99,
         image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Robux_2019_Logo_gold.svg/1024px-Robux_2019_Logo_gold.svg.png?20201227051146',
         category: 'Game Currency',
         platform: 'PC/Mobile',
@@ -149,6 +149,150 @@ let products = [
     inStock: true
 },
 
+{
+    id: '11',
+    name: 'FTL: Faster Than Light',
+    basePrice: 1499,
+    image: 'https://cdn.akamai.steamstatic.com/steam/apps/212680/header.jpg',
+    category: 'PC Game',
+    platform: 'Steam',
+    description: 'Indie space strategy roguelike where every playthrough is a unique challenge.',
+    discount: 0,
+    hasSubProducts: false,
+    inStock: true
+},
+{
+    id: '12',
+    name: 'Contagion',
+    basePrice: 1499,
+    image: 'https://cdn.akamai.steamstatic.com/steam/apps/238430/header.jpg',
+    category: 'PC Game',
+    platform: 'Steam',
+    description: 'Co-op zombie survival horror with both PvE and PvP modes.',
+    discount: 0,
+    hasSubProducts: false,
+    inStock: true
+},
+{
+    id: '13',
+    name: 'Brotato',
+    basePrice: 799,
+    image: 'https://cdn.akamai.steamstatic.com/steam/apps/1942280/header.jpg',
+    category: 'PC Game',
+    platform: 'Steam',
+    description: 'A top-down arena shooter roguelite featuring a potato warrior with crazy weapons.',
+    discount: 0,
+    hasSubProducts: false,
+    inStock: true
+},
+{
+    id: '14',
+    name: 'Cultic',
+    basePrice: 1499,
+    image: 'https://cdn.akamai.steamstatic.com/steam/apps/1684930/header.jpg',
+    category: 'PC Game',
+    platform: 'Steam',
+    description: 'Retro-inspired horror FPS where you fight cultists with classic weaponry.',
+    discount: 0,
+    hasSubProducts: false,
+    inStock: true
+},
+{
+    id: '15',
+    name: 'Heavy Bullets',
+    basePrice: 1499,
+    image: 'https://cdn.akamai.steamstatic.com/steam/apps/297120/header.jpg',
+    category: 'PC Game',
+    platform: 'Steam',
+    description: 'A fast-paced, procedurally generated FPS with a focus on resource management.',
+    discount: 0,
+    hasSubProducts: false,
+    inStock: true
+},
+{
+    id: '16',
+    name: 'People Playground',
+    basePrice: 1499,
+    image: 'https://cdn.akamai.steamstatic.com/steam/apps/1118200/header.jpg',
+    category: 'PC Game',
+    platform: 'Steam',
+    description: 'A physics sandbox where you can experiment with creativity and destruction.',
+    discount: 0,
+    hasSubProducts: false,
+    inStock: true
+},
+{
+    id: '17',
+    name: 'Terraria',
+    basePrice: 1499,
+    image: 'https://cdn.akamai.steamstatic.com/steam/apps/105600/header.jpg',
+    category: 'PC Game',
+    platform: 'Steam',
+    description: '2D sandbox adventure game filled with crafting, exploration, and combat.',
+    discount: 0,
+    hasSubProducts: false,
+    inStock: true
+},
+{
+    id: '18',
+    name: 'Portal 2',
+    basePrice: 1499,
+    image: 'https://cdn.akamai.steamstatic.com/steam/apps/620/header.jpg',
+    category: 'PC Game',
+    platform: 'Steam',
+    description: 'Legendary puzzle-platform game with mind-bending physics and co-op mode.',
+    discount: 0,
+    hasSubProducts: false,
+    inStock: true
+},
+{
+    id: '19',
+    name: 'Left 4 Dead 2',
+    basePrice: 1499,
+    image: 'https://cdn.akamai.steamstatic.com/steam/apps/550/header.jpg',
+    category: 'PC Game',
+    platform: 'Steam',
+    description: 'Valve’s classic co-op zombie shooter full of action and replayability.',
+    discount: 0,
+    hasSubProducts: false,
+    inStock: true
+},
+{
+    id: '20',
+    name: 'Hotline Miami',
+    basePrice: 1499,
+    image: 'https://cdn.akamai.steamstatic.com/steam/apps/219150/header.jpg',
+    category: 'PC Game',
+    platform: 'Steam',
+    description: 'Fast-paced, brutal top-down action with a legendary soundtrack.',
+    discount: 0,
+    hasSubProducts: false,
+    inStock: true
+},
+{
+    id: '21',
+    name: 'Undertale',
+    basePrice: 1499,
+    image: 'https://cdn.akamai.steamstatic.com/steam/apps/391540/header.jpg',
+    category: 'PC Game',
+    platform: 'Steam',
+    description: 'Beloved indie RPG with unique choices and unforgettable characters.',
+    discount: 0,
+    hasSubProducts: false,
+    inStock: true
+},
+{
+    id: '22',
+    name: 'Among Us',
+    basePrice: 799,
+    image: 'https://cdn.akamai.steamstatic.com/steam/apps/945360/header.jpg',
+    category: 'PC Game',
+    platform: 'Steam',
+    description: 'Social deduction game of teamwork and betrayal in space.',
+    discount: 0,
+    hasSubProducts: false,
+    inStock: true
+}
 
 
 ];
