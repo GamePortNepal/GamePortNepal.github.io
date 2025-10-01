@@ -1,1071 +1,631 @@
-// Advanced Product System with Sub-Products & Admin Management
-let products = [
-      {
-        id: '1',
-        name: 'Minecraft (Java + Bedrock)',
-        basePrice: 4499,
-        image: 'https://tse3.mm.bing.net/th/id/OIP.KO2HbRC_h67s9ACdI4VyzAHaDu?r=0&cb=thfvnext&rs=1&pid=ImgDetMain&o=7&rm=3',
-        category: 'Redeem Code',
-        platform: 'PC',
-        description: 'Brand New Minecraft Redeem Code with Java + Bedrock editions included.',
-        discount: 0,
-        hasSubProducts: false,
-        inStock: true
-    },
-     {
-        id: '2',
-        name: 'Menace Cape',
-        basePrice: 250,
-        image: 'https://minecraft.wiki/images/Menace_cape_artwork.png?0f97f&format=original',
-        category: 'Cosmetic',
-        platform: 'PC/Mobile',
-        description: 'Exclusive Menace Cape for your Minecraft character.',
-        discount: 0,
-        hasSubProducts: false,
-        inStock: true
-    },
- {
-        id: '3',
-        name: 'Home Cape',
-        basePrice: 1000,
-        image: 'https://s.namemc.com/3d/skin/body.png?id=12b92a9206470fe2&cape=afc3ba389452cbb1&theta=210&width=256&height=256',
-        category: 'Cosmetic',
-        platform: 'PC/Mobile',
-        description: 'Exclusive Menace Cape for your Minecraft character.',
-        discount: 50,
-        hasSubProducts: false,
-        inStock: true
-    },
-
-    {
-        id: '4',
-        name: 'Free Fire Diamonds',
-        basePrice: 90,
-        image: 'https://www.talkesport.com/wp-content/uploads/free-fire-free-diamonds.webp',
-        category: 'Game Currency',
-        platform: 'PC/Mobile',
-        description: 'Free Fire Diamonds for characters, skins and upgrades. UID Required.',
-        discount: 0,
-        hasSubProducts: true,
-        subProducts: [
-            { id: '1-1', name: '115 Diamonds', price: 90, description: '115💎 Basic Pack' },
-            { id: '1-2', name: '240 Diamonds', price: 180, description: '240💎 Popular Choice' },
-            { id: '1-3', name: '610 Diamonds', price: 435, description: '610💎 Best Value' },
-            { id: '1-4', name: '1240 Diamonds', price: 855, description: '1240💎 Premium Pack' },
-            { id: '1-5', name: '5060 Diamonds', price: 3410, description: '5060💎 MEGA PACK' }
-        ],
-        inStock: true
-    },
-    {
-        id: '5',
-        name: 'PUBG UC',
-        basePrice: 150,
-        image: 'https://th.bing.com/th/id/OIP.f1nTlu-kk76qdgoJwZJXPwHaEK?w=290&h=180&c=7&r=0&o=7&pid=1.7&rm=3',
-        category: 'Game Currency',
-        platform: 'PC/Mobile',
-        description: 'PUBG Unknown Cash for in-game purchases and upgrades.',
-        discount: 0,
-        hasSubProducts: true,
-        subProducts: [
-            { id: '2-1', name: '60 UC', price: 150, description: '60 UC Basic Pack' },
-            { id: '2-2', name: '120 UC', price: 295, description: '120 UC Popular Choice' },
-            { id: '2-3', name: '325 UC', price: 762, description: '325 UC Great Value' },
-            { id: '2-4', name: '660 UC', price: 1485, description: '660 UC Best Deal' },
-            { id: '2-5', name: '985 UC', price: 2231, description: '985 UC Premium Pack' }
-        ],
-        inStock: true
-    },
-  
-    {
-        id: '6',
-        name: 'Discord Nitro',
-        basePrice: 440,
-        image: 'https://tse4.mm.bing.net/th/id/OIP.htlr6BrX9NbKhKFN6uQabgHaHa?r=0&cb=thfvnext&rs=1&pid=ImgDetMain&o=7&rm=3',
-        category: 'Subscription',
-        platform: 'PC/Mobile',
-        description: 'Discord Nitro subscription with enhanced features.',
-        discount: 0,
-        hasSubProducts: true,
-        subProducts: [
-            { id: '4-1', name: 'Nitro Basic - 1 Month', price: 440, description: 'Basic features and perks' },
-            { id: '4-2', name: 'Nitro Premium - 1 Month', price: 1499, description: 'All features unlocked' }
-        ],
-        inStock: true
-    },
-    {
-        id: '7',
-        name: 'Roblox Robux',
-        basePrice: 720,
-        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Robux_2019_Logo_gold.svg/1024px-Robux_2019_Logo_gold.svg.png?20201227051146',
-        category: 'Game Currency',
-        platform: 'PC/Mobile',
-        description: 'Roblox Robux for games, accessories, and upgrades.',
-        discount: 0,
-        hasSubProducts: true,
-        subProducts: [
-            { id: '5-1', name: '400 Robux Gift Card', price: 720, description: 'Digital Gift Card' }
-        ],
-        inStock: true
-    },
-    {
-        id: '8',
-        name: 'Roblox Gamepass',
-        basePrice: 99,
-        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Robux_2019_Logo_gold.svg/1024px-Robux_2019_Logo_gold.svg.png?20201227051146',
-        category: 'Game Currency',
-        platform: 'PC/Mobile',
-           description: 'Buy any custom amount of Robux at Rs. 2 per Robux.',
-    discount: 5,
-    hasSubProducts: true, // keep true so button shows
-    subProducts: [], // leave empty
-    inStock: true
-},
-{
-    id: '9',
-    name: 'Netflix Account',
-    basePrice: 399,
-    image: 'https://th.bing.com/th/id/OIP.yLxJB4Y-b4_cEuE-JNNYfQHaFj?w=285&h=214&c=7&r=0&o=7&pid=1.7&rm=3', // Example Netflix logo
-    category: 'Streaming Service',
-    platform: 'PC/Mobile',
-    description: 'Netflix subscription accounts available as shared or personal. Choose the plan that suits you.',
-    discount: 0,
-    hasSubProducts: true,
-    subProducts: [
-        { id: '9-1', name: 'Shared Account', price: 399, description: 'Shared Netflix Account Plan' },
-        { id: '9-2', name: 'Personal Account', price: 499, description: 'Personal Netflix Account Plan' }
-    ],
-    inStock: true
-},
-      {
-    id: '10',
-    name: 'Among Us (Epic Games)',
-    basePrice: 299,
-    image: 'https://www.bing.com/th/id/OIP.eMKr4WZ8Ua76OhcPNRnHOQHaEK?w=258&h=211&c=8&rs=1&qlt=70&o=7&cb=thws5&pid=3.1&rm=3', 
-    category: 'Game',
-    platform: 'PC',
-    description: 'Among Us - The popular social deduction game available via Epic Games.',
-    discount: 0,
-    hasSubProducts: false,
-    inStock: true
-},
-
-{
-    id: '11',
-    name: 'FTL: Faster Than Light',
-    basePrice: 1499,
-    image: 'https://cdn.akamai.steamstatic.com/steam/apps/212680/header.jpg',
-    category: 'PC Game',
-    platform: 'Steam',
-    description: 'Indie space strategy roguelike where every playthrough is a unique challenge.',
-    discount: 0,
-    hasSubProducts: false,
-    inStock: true
-},
-{
-    id: '12',
-    name: 'Contagion',
-    basePrice: 1499,
-    image: 'https://cdn.akamai.steamstatic.com/steam/apps/238430/header.jpg',
-    category: 'PC Game',
-    platform: 'Steam',
-    description: 'Co-op zombie survival horror with both PvE and PvP modes.',
-    discount: 0,
-    hasSubProducts: false,
-    inStock: true
-},
-{
-    id: '13',
-    name: 'Brotato',
-    basePrice: 799,
-    image: 'https://cdn.akamai.steamstatic.com/steam/apps/1942280/header.jpg',
-    category: 'PC Game',
-    platform: 'Steam',
-    description: 'A top-down arena shooter roguelite featuring a potato warrior with crazy weapons.',
-    discount: 0,
-    hasSubProducts: false,
-    inStock: true
-},
-{
-    id: '14',
-    name: 'Cultic',
-    basePrice: 1499,
-    image: 'https://cdn.akamai.steamstatic.com/steam/apps/1684930/header.jpg',
-    category: 'PC Game',
-    platform: 'Steam',
-    description: 'Retro-inspired horror FPS where you fight cultists with classic weaponry.',
-    discount: 0,
-    hasSubProducts: false,
-    inStock: true
-},
-{
-    id: '15',
-    name: 'Heavy Bullets',
-    basePrice: 1499,
-    image: 'https://cdn.akamai.steamstatic.com/steam/apps/297120/header.jpg',
-    category: 'PC Game',
-    platform: 'Steam',
-    description: 'A fast-paced, procedurally generated FPS with a focus on resource management.',
-    discount: 0,
-    hasSubProducts: false,
-    inStock: true
-},
-{
-    id: '16',
-    name: 'People Playground',
-    basePrice: 1499,
-    image: 'https://cdn.akamai.steamstatic.com/steam/apps/1118200/header.jpg',
-    category: 'PC Game',
-    platform: 'Steam',
-    description: 'A physics sandbox where you can experiment with creativity and destruction.',
-    discount: 0,
-    hasSubProducts: false,
-    inStock: true
-},
-{
-    id: '17',
-    name: 'Terraria',
-    basePrice: 1499,
-    image: 'https://cdn.akamai.steamstatic.com/steam/apps/105600/header.jpg',
-    category: 'PC Game',
-    platform: 'Steam',
-    description: '2D sandbox adventure game filled with crafting, exploration, and combat.',
-    discount: 0,
-    hasSubProducts: false,
-    inStock: true
-},
-{
-    id: '18',
-    name: 'Portal 2',
-    basePrice: 1499,
-    image: 'https://cdn.akamai.steamstatic.com/steam/apps/620/header.jpg',
-    category: 'PC Game',
-    platform: 'Steam',
-    description: 'Legendary puzzle-platform game with mind-bending physics and co-op mode.',
-    discount: 0,
-    hasSubProducts: false,
-    inStock: true
-},
-{
-    id: '19',
-    name: 'Left 4 Dead 2',
-    basePrice: 1499,
-    image: 'https://cdn.akamai.steamstatic.com/steam/apps/550/header.jpg',
-    category: 'PC Game',
-    platform: 'Steam',
-    description: 'Valve’s classic co-op zombie shooter full of action and replayability.',
-    discount: 0,
-    hasSubProducts: false,
-    inStock: true
-},
-{
-    id: '20',
-    name: 'Hotline Miami',
-    basePrice: 1499,
-    image: 'https://cdn.akamai.steamstatic.com/steam/apps/219150/header.jpg',
-    category: 'PC Game',
-    platform: 'Steam',
-    description: 'Fast-paced, brutal top-down action with a legendary soundtrack.',
-    discount: 0,
-    hasSubProducts: false,
-    inStock: true
-},
-{
-    id: '21',
-    name: 'Undertale',
-    basePrice: 1499,
-    image: 'https://cdn.akamai.steamstatic.com/steam/apps/391540/header.jpg',
-    category: 'PC Game',
-    platform: 'Steam',
-    description: 'Beloved indie RPG with unique choices and unforgettable characters.',
-    discount: 0,
-    hasSubProducts: false,
-    inStock: true
-},
-{
-    id: '22',
-    name: 'Among Us',
-    basePrice: 799,
-    image: 'https://cdn.akamai.steamstatic.com/steam/apps/945360/header.jpg',
-    category: 'PC Game',
-    platform: 'Steam',
-    description: 'Social deduction game of teamwork and betrayal in space.',
-    discount: 0,
-    hasSubProducts: false,
-    inStock: true
-}
-
-
-];
-
-// Admin credentials
-const ADMIN_CREDENTIALS = {
-    email: 'helpiamlaggy@gmail.com',
-    password: 'lolgettrolledlilbro'
-};
-
-// Admin session
-let isAdminLoggedIn = false;
-
-// Cart functionality
+// Shopping cart functionality
 let cart = [];
+let currentCategory = 'all';
 
-// Load products and setup on page load
+// Discord webhook URL (from user requirements)
+const DISCORD_WEBHOOK_URL = 'https://discord.com/api/webhooks/1406851782096846910/npe0FHRlNnqEDQ-NUFssyMn9Y_rqDB_wPXompXYmXwFK6H4eoBwF7wHV6hAJ_-plYxYl';
+
+// Initialize the application
 document.addEventListener('DOMContentLoaded', function() {
-    loadProducts();
-    updateCartCount();
-    checkAdminSession();
+    // Display initial products (all products)
+    displayProducts(productsDatabase.products);
+    // Set up all event listeners for user interactions
+    setupEventListeners();
+    // Load any previously saved cart items from local storage
+    loadCartFromStorage();
+    // Update the cart count display in the header
+    updateCartDisplay();
 });
 
-// ---------------- ADMIN WEBHOOK (Exact Product Format) ----------------
-async function sendAdminLogToDiscord(action, product) {
-    const webhookUrl = "https://discord.com/api/webhooks/1418954700299960401/qqK4tO_1K9Qkw8wEocp1SnAGWxSUb_oO-1a-xzxkYtdaX94OrG95vvkLzske8Er-qcdw";
-
-    // Convert the product object into exact text format
-    const productText = 
-`id: '${product.id}',
-name: '${product.name}',
-basePrice: ${product.basePrice},
-image: '${product.image}',
-category: '${product.category}',
-platform: '${product.platform}',
-description: '${product.description}',
-discount: ${product.discount},
-hasSubProducts: ${product.hasSubProducts},
-inStock: ${product.inStock}`;
-
-    const payload = {
-        content: `**Admin Action:** ${action}\n\`\`\`\n${productText}\n\`\`\``
-    };
-
-    try {
-        await fetch(webhookUrl, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(payload)
-        });
-    } catch (error) {
-        console.error("Failed to send admin log:", error);
-    }
-}
-
-// ---------------- ADMIN FUNCTIONS ----------------
-function showAdminLogin() {
-    if (isAdminLoggedIn) {
-        showAdminPanel();
-    } else {
-        const modal = document.getElementById('admin-login-modal');
-        if (modal) modal.style.display = 'block';
-    }
-}
-
-function closeAdminLogin() {
-    const modal = document.getElementById('admin-login-modal');
-    if (modal) modal.style.display = 'none';
-    const err = document.getElementById('admin-error');
-    if (err) err.style.display = 'none';
-}
-
-function adminLogin(event) {
-    if (event) event.preventDefault();
+// Set up all event listeners for interactive elements
+function setupEventListeners() {
+    // Search functionality: Listen for input events on the search bar and debounce the handler
+    const searchInput = document.getElementById('searchInput');
+    searchInput.addEventListener('input', debounce(handleSearch, 300)); // Wait 300ms after last input to avoid excessive calls
     
-    const email = document.getElementById('admin-email').value;
-    const password = document.getElementById('admin-password').value;
-    const errorDiv = document.getElementById('admin-error');
+    // Category filters: Add click listeners to all category buttons
+    const categoryButtons = document.querySelectorAll('.category-btn');
+    categoryButtons.forEach(button => {
+        button.addEventListener('click', () => handleCategoryFilter(button));
+    });
     
-    if (email === ADMIN_CREDENTIALS.email && password === ADMIN_CREDENTIALS.password) {
-        isAdminLoggedIn = true;
-        localStorage.setItem('gameport_admin', 'true');
-        closeAdminLogin();
-        showAdminPanel();
-        updateAdminButton();
-        showNotification('Admin login successful!', 'success');
-    } else {
-        if (errorDiv) {
-            errorDiv.textContent = 'Invalid credentials! Please try again.';
-            errorDiv.style.display = 'block';
+    // Order form submission: Listen for the submit event on the order form
+    const orderForm = document.getElementById('orderForm');
+    orderForm.addEventListener('submit', handleOrderSubmission);
+    
+    // Close modals when clicking outside: Add a global click listener to detect clicks outside modals
+    document.addEventListener('click', (e) => {
+        // If the click is on the cart modal background, close the cart
+        if (e.target.classList.contains('cart-modal')) {
+            closeCart();
         }
-        showNotification('Invalid admin credentials!', 'error');
-    }
-}
-
-function logoutAdmin() {
-    isAdminLoggedIn = false;
-    localStorage.removeItem('gameport_admin');
-    closeAdminPanel();
-    updateAdminButton();
-    showNotification('Admin logged out', 'info');
-}
-
-function checkAdminSession() {
-    if (localStorage.getItem('gameport_admin')) {
-        isAdminLoggedIn = true;
-        updateAdminButton();
-    }
-}
-
-function updateAdminButton() {
-    const adminBtn = document.getElementById('admin-btn');
-    if (adminBtn) {
-        if (isAdminLoggedIn) {
-            adminBtn.innerHTML = '<i class="fas fa-user-shield"></i> Admin Panel';
-            adminBtn.classList.add('admin-active');
-        } else {
-            adminBtn.innerHTML = '<i class="fas fa-user-shield"></i> Admin';
-            adminBtn.classList.remove('admin-active');
+        // If the click is on the checkout modal background, close the checkout
+        if (e.target.classList.contains('checkout-modal')) {
+            closeCheckout();
         }
-    }
+        // If the click is on the amount modal background, close the amount modal
+        if (e.target.classList.contains('amount-modal')) {
+            closeAmountModal();
+        }
+    });
 }
 
-function showAdminPanel() {
-    if (!isAdminLoggedIn) {
-        showAdminLogin();
+// Search functionality: Filters products based on user's search query
+function handleSearch(event) {
+    const query = event.target.value.toLowerCase(); // Get the search query and convert to lowercase
+    // Use the productsDatabase to search for matching products
+    const searchResults = productsDatabase.searchProducts(query);
+    // Sort search results by relevance
+    const sortedResults = sortSearchResults(searchResults, query);
+    // Display the filtered search results
+    displayProducts(sortedResults);
+}
+
+// Sort search results by relevance
+function sortSearchResults(results, query) {
+    if (!query.trim()) return results;
+    
+    const searchTerm = query.toLowerCase();
+    
+    return results.sort((a, b) => {
+        const aName = a.name.toLowerCase();
+        const bName = b.name.toLowerCase();
+        
+        // Exact match at start gets highest priority
+        const aStartsWithQuery = aName.startsWith(searchTerm);
+        const bStartsWithQuery = bName.startsWith(searchTerm);
+        
+        if (aStartsWithQuery && !bStartsWithQuery) return -1;
+        if (!aStartsWithQuery && bStartsWithQuery) return 1;
+        
+        // Check if name contains the query (closer to start = higher priority)
+        const aIndex = aName.indexOf(searchTerm);
+        const bIndex = bName.indexOf(searchTerm);
+        
+        if (aIndex !== -1 && bIndex !== -1) {
+            return aIndex - bIndex; // Earlier position wins
+        }
+        if (aIndex !== -1 && bIndex === -1) return -1;
+        if (aIndex === -1 && bIndex !== -1) return 1;
+        
+        // For partial matches (like "terr" matching "Terraria")
+        const aPartialMatch = searchTerm.length >= 3 && aName.includes(searchTerm);
+        const bPartialMatch = searchTerm.length >= 3 && bName.includes(searchTerm);
+        
+        if (aPartialMatch && !bPartialMatch) return -1;
+        if (!aPartialMatch && bPartialMatch) return 1;
+        
+        // Default alphabetical sort
+        return aName.localeCompare(bName);
+    });
+}
+
+// Category filter functionality: Filters products by the selected category
+function handleCategoryFilter(button) {
+    // Update the visual state of category buttons to show the active one
+    document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
+    button.classList.add('active');
+    
+    // Get the category attribute from the clicked button
+    const category = button.getAttribute('data-category');
+    // Update the global currentCategory variable
+    currentCategory = category;
+    
+    // Get products belonging to the selected category
+    const filteredProducts = productsDatabase.getProductsByCategory(category);
+    // Display the filtered products
+    displayProducts(filteredProducts);
+}
+
+// Display products in the grid layout
+function displayProducts(productsToShow) {
+    const productsGrid = document.getElementById('productsGrid'); // Get the container for product cards
+    
+    // If no products are found, display a "No products found" message
+    if (productsToShow.length === 0) {
+        productsGrid.innerHTML = '<div class="loading">No products found matching your criteria.</div>';
         return;
     }
     
-    const panel = document.getElementById('admin-panel-modal');
-    if (panel) panel.style.display = 'block';
-    loadAdminProducts();
-}
-
-function closeAdminPanel() {
-    const panel = document.getElementById('admin-panel-modal');
-    if (panel) panel.style.display = 'none';
-}
-
-function showTab(tabName, evt) {
-    // Hide all tabs
-    const tabs = document.querySelectorAll('.tab-content');
-    const tabBtns = document.querySelectorAll('.tab-btn');
-    
-    tabs.forEach(tab => tab.classList.remove('active'));
-    tabBtns.forEach(btn => btn.classList.remove('active'));
-    
-    // Show selected tab
-    const target = document.getElementById(tabName + '-tab');
-    if (target) target.classList.add('active');
-    if (evt && evt.currentTarget) evt.currentTarget.classList.add('active');
-}
-
-function loadAdminProducts() {
-    const adminList = document.getElementById('admin-products-list');
-    if (!adminList) return;
-    adminList.innerHTML = '';
-    
-    products.forEach(product => {
-        const discountedPrice = product.basePrice - (product.basePrice * product.discount / 100);
-        const adminProductCard = document.createElement('div');
-        adminProductCard.className = 'admin-product-card';
+    // Map each product to an HTML card structure
+    productsGrid.innerHTML = productsToShow.map(product => {
+        // Calculate the final price considering any discounts
+        const finalPrice = productsDatabase.calculatePrice(product);
+        // Check if the product has a discount
+        const hasDiscount = product.discount > 0;
         
-        adminProductCard.innerHTML = `
-            <img src="${product.image}" alt="${product.name}" class="admin-product-image">
-            <div class="admin-product-info">
-                <h4>${product.name}</h4>
-                <p class="admin-product-platform">${product.platform}</p>
-                <p class="admin-product-price">Rs. ${discountedPrice.toLocaleString()}
-                    ${product.discount > 0 ? `<span class="original-price">Rs. ${product.basePrice.toLocaleString()}</span>` : ''}
-                </p>
-                ${product.discount > 0 ? `<span class="discount-badge">${product.discount}% OFF</span>` : ''}
-                ${product.hasSubProducts ? `<span class="sub-badge">${product.subProducts.length} Sub-Products</span>` : ''}
-            </div>
-            <div class="admin-product-actions">
-                <button class="btn btn-outline btn-sm" onclick="editProduct('${product.id}')">
-                    <i class="fas fa-edit"></i> Edit
-                </button>
-                <button class="btn btn-outline btn-sm" onclick="setDiscount('${product.id}')">
-                    <i class="fas fa-percentage"></i> Discount
-                </button>
-                <button class="btn btn-outline btn-sm danger" onclick="deleteProduct('${product.id}')">
-                    <i class="fas fa-trash"></i> Delete
-                </button>
+        // Special handling for Roblox Gamepass - don't show price, show conversion info instead
+        let priceDisplay = '';
+        if (product.id === '8') { // Roblox Gamepass
+            priceDisplay = `<div style="color: #ff0000; font-weight: 600;">1 Robux = 1.7 RS</div><div style="color: #cccccc; font-size: 0.9rem;">Minimum: 10 Robux</div>`;
+        } else {
+            priceDisplay = hasDiscount ? 
+                `<span style="text-decoration: line-through; color: #888; margin-right: 10px;">NPR ${product.basePrice}</span>
+                 <span>NPR ${finalPrice}</span>
+                 <span style="color: #00ff00; font-size: 0.9rem; margin-left: 5px;">(${product.discount}% OFF)</span>` 
+                : `NPR ${finalPrice}`;
+        }
+        
+        return `
+            <div class="product-card" data-product-id="${product.id}">
+                <img src="${product.image}" alt="${product.name}" class="product-image" 
+                     onerror="this.src='https://images.unsplash.com/photo-1560253023-3ec5d502959f?w=400&h=300&fit=crop'">
+                <div class="product-info">
+                    <h3>${product.name}</h3>
+                    <p class="product-description">${product.description}</p>
+                    <div class="product-meta">
+                        <div class="product-price">
+                            ${priceDisplay}
+                        </div>
+                        <span class="product-category">${product.category}</span>
+                    </div>
+                    <div style="color: #888; font-size: 0.9rem; margin-top: 5px;">
+                        Platform: ${product.platform}
+                    </div>
+                </div>
+                <div class="product-actions">
+                    <button class="action-btn" onclick="buyNow('${product.id}')">Buy Now</button>
+                    <button class="action-btn" onclick="addToCart('${product.id}')">Add to Cart</button>
+                </div>
             </div>
         `;
-        
-        adminList.appendChild(adminProductCard);
-    });
+    }).join(''); // Join all the generated HTML strings into a single string
 }
 
-function addProduct(event) {
-    event.preventDefault();
-
-    const newProduct = {
-        id: '', // leave blank for manual entry
-        name: document.getElementById('product-name').value,
-        basePrice: parseInt(document.getElementById('product-price').value),
-        image: document.getElementById('product-image').value,
-        category: document.getElementById('product-category').value,
-        platform: document.getElementById('product-platform').value,
-        description: document.getElementById('product-description').value,
-        discount: 0,
-        hasSubProducts: false,
-        inStock: true
-    };
-
-    // Add product to array
-    products.push(newProduct);
-    saveProducts();
-    loadProducts();
-    loadAdminProducts();
-
-    // Reset form
-    document.getElementById('add-product-form').reset();
-    showNotification('Product added successfully!', 'success');
-
-    // Send admin log to Discord
-    const webhookUrl = "https://discord.com/api/webhooks/1418954700299960401/qqK4tO_1K9Qkw8wEocp1SnAGWxSUb_oO-1a-xzxkYtdaX94OrG95vvkLzske8Er-qcdw";
-
-    const productText = `id: '${newProduct.id}',
-name: '${newProduct.name}',
-basePrice: ${newProduct.basePrice},
-image: '${newProduct.image}',
-category: '${newProduct.category}',
-platform: '${newProduct.platform}',
-description: '${newProduct.description}',
-discount: ${newProduct.discount},
-hasSubProducts: ${newProduct.hasSubProducts},
-inStock: ${newProduct.inStock}`;
-
-    const payload = {
-        content: `**Admin Action: ➕ Added Product**\n\`\`\`\n${productText}\n\`\`\``
-    };
-
-    // Send fetch request directly
-    fetch(webhookUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
-    }).catch(err => console.error("Failed to send new product to Discord:", err));
-}
-
-
-function editProduct(productId) {
-    const product = products.find(p => p.id === productId);
-    if (!product) return;
-    
-    // Fill form with existing data
-    const nameEl = document.getElementById('product-name');
-    const priceEl = document.getElementById('product-price');
-    const imageEl = document.getElementById('product-image');
-    const categoryEl = document.getElementById('product-category');
-    const platformEl = document.getElementById('product-platform');
-    const descEl = document.getElementById('product-description');
-
-    if (nameEl) nameEl.value = product.name;
-    if (priceEl) priceEl.value = product.basePrice;
-    if (imageEl) imageEl.value = product.image;
-    if (categoryEl) categoryEl.value = product.category;
-    if (platformEl) platformEl.value = product.platform;
-    if (descEl) descEl.value = product.description;
-    
-    // Switch to add product tab (which becomes edit mode)
-    showTab('add-product');
-    
-    // Change the form submit to edit mode
-    const form = document.getElementById('add-product-form');
-    if (form) {
-        form.onsubmit = function(event) {
-            event.preventDefault();
-            updateProduct(productId);
-        };
-    }
-    
-    // Change button text
-    if (form) {
-        const submitBtn = form.querySelector('button[type="submit"]');
-        if (submitBtn) submitBtn.innerHTML = '<i class="fas fa-save"></i> Update Product';
-    }
-}
-
-function updateProduct(productId) {
-    const product = products.find(p => p.id === productId);
-    if (!product) return;
-    
-    const nameEl = document.getElementById('product-name');
-    const priceEl = document.getElementById('product-price');
-    const imageEl = document.getElementById('product-image');
-    const categoryEl = document.getElementById('product-category');
-    const platformEl = document.getElementById('product-platform');
-    const descEl = document.getElementById('product-description');
-
-    if (nameEl) product.name = nameEl.value;
-    if (priceEl) product.basePrice = parseInt(priceEl.value);
-    if (imageEl) product.image = imageEl.value;
-    if (categoryEl) product.category = categoryEl.value;
-    if (platformEl) product.platform = platformEl.value;
-    if (descEl) product.description = descEl.value;
-    
-    saveProducts();
-    loadProducts();
-    loadAdminProducts();
-    
-    // Reset form and button
-    const form = document.getElementById('add-product-form');
-    if (form) {
-        form.reset();
-        form.onsubmit = addProduct;
-        const submitBtn = form.querySelector('button[type="submit"]');
-        if (submitBtn) submitBtn.innerHTML = '<i class="fas fa-plus"></i> Add Product';
-    }
-    
-    showNotification('Product updated successfully!', 'success');
-    sendAdminLogToDiscord("✏️ Updated Product", product);
-}
-
-function setDiscount(productId) {
-    const product = products.find(p => p.id === productId);
-    if (!product) return;
-    
-    const discount = prompt(`Set discount for ${product.name} (0-100%):`, product.discount);
-    if (discount !== null) {
-        const discountNum = parseInt(discount);
-        if (discountNum >= 0 && discountNum <= 100) {
-            product.discount = discountNum;
-            saveProducts();
-            loadProducts();
-            loadAdminProducts();
-            showNotification(`Discount set to ${discountNum}%`, 'success');
-            sendAdminLogToDiscord("💸 Set Discount", product);
-        } else {
-            showNotification('Invalid discount percentage!', 'error');
-        }
-    }
-}
-function addCustomRobux() {
-    const robuxAmount = parseInt(prompt("Enter the amount of Robux you want:"));
-    if (!robuxAmount || robuxAmount <= 0) {
-        showNotification("Please enter a valid number!", "error");
+// Add product to the shopping cart
+function addToCart(productId) {
+    // Special handling for Roblox Gamepass
+    if (productId === '8') {
+        openAmountModal();
         return;
     }
-
-    const price = robuxAmount * 1.9;
-    const itemId = `robux-${robuxAmount}`;
-
-    const existingItem = cart.find(item => item.id === itemId);
-    if (existingItem) {
-        existingItem.quantity += 1;
-    } else {
-        cart.push({
-            id: itemId,
-            name: `${robuxAmount} Robux`,
-            price: price,
-            image: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Robux_2019_Logo_gold.svg/1024px-Robux_2019_Logo_gold.svg.png?20201227051146",
-            quantity: 1,
-            parentProduct: "Roblox Robux"
-        });
-    }
-
-    updateCartCount();
-    showNotification(`${robuxAmount} Robux added to cart!`, "success");
-}
-
-
-function deleteProduct(productId) {
-    const product = products.find(p => p.id === productId);
-    if (!product) return;
     
-    if (confirm(`Are you sure you want to delete "${product.name}"?`)) {
-        products = products.filter(p => p.id !== productId);
-        saveProducts();
-        loadProducts();
-        loadAdminProducts();
-        showNotification('Product deleted successfully!', 'success');
-        sendAdminLogToDiscord("🗑️ Deleted Product", product);
-    }
-}
-
-function saveProducts() {
-    localStorage.setItem('gameport_products', JSON.stringify(products));
-}
-
-function loadStoredProducts() {
-    const stored = localStorage.getItem('gameport_products');
-    if (stored) {
-        const storedProducts = JSON.parse(stored);
-        
-        // Only add products that are not already in the default array
-        storedProducts.forEach(sp => {
-            if (!products.find(p => p.id === sp.id)) {
-                products.push(sp);
-            }
-        });
-    }
-}
-// Product Display Functions
-function loadProducts() {
-    loadStoredProducts();
-    const productsGrid = document.getElementById('products-grid');
-    if (!productsGrid) return;
-    productsGrid.innerHTML = '';
+    // Find the product in the database
+    const product = productsDatabase.products.find(p => p.id === productId);
+    if (!product) return; // If product not found, do nothing
     
-    products.forEach(product => {
-        const productCard = createProductCard(product);
-        productsGrid.appendChild(productCard);
-    });
-}
-
-function createProductCard(product) {
-    const card = document.createElement('div');
-    card.className = 'product-card';
-    
-    const discountedPrice = product.basePrice - (product.basePrice * product.discount / 100);
-    
-    card.innerHTML = `
-        <div class="product-image">
-            <img src="${product.image}" alt="${product.name}">
-            ${product.discount > 0 ? `<div class="discount-overlay">${product.discount}% OFF</div>` : ''}
-            <div class="product-overlay">
-                ${product.id === '8' ? `
-                    <button class="btn btn-primary" onclick="addCustomRobux()">
-                        <i class="fas fa-plus"></i> Buy Custom Robux
-                    </button>
-                ` : product.hasSubProducts ? `
-                    <button class="btn btn-primary" onclick="showSubProducts('${product.id}')">
-                        <i class="fas fa-list"></i>
-                        View Options
-                    </button>
-                ` : `
-                    <button class="btn btn-primary" onclick="addToCart('${product.id}')">
-                        <i class="fas fa-plus"></i>
-                        Add to Cart
-                    </button>
-                    <button class="btn btn-outline" onclick="buyNow('${product.id}')">
-                        Buy Now
-                    </button>
-                `}
-            </div>
-        </div>
-        <div class="product-info">
-            <div class="product-header">
-                <div>
-                    <h4 class="product-title">${product.name}</h4>
-                    <span class="product-platform">${product.platform}</span>
-                </div>
-                <span class="product-category">${product.category}</span>
-            </div>
-            <p class="product-description">${product.description}</p>
-            <div class="product-footer">
-                <span class="product-price">
-                    Rs. ${discountedPrice.toLocaleString()}
-                    ${product.discount > 0 ? `<span class="original-price">Rs. ${product.basePrice.toLocaleString()}</span>` : ''}
-                </span>
-                <span class="product-stock">${product.inStock ? 'In Stock' : 'Out of Stock'}</span>
-            </div>
-        </div>
-    `;
-    
-    return card;
-
-}
-
-function showSubProducts(productId) {
-    const product = products.find(p => p.id === productId);
-    if (!product || !product.hasSubProducts) return;
-    
-    const modal = document.createElement('div');
-    modal.className = 'modal';
-    modal.id = 'sub-products-modal';
-    modal.innerHTML = `
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4>${product.name} - Choose Option</h4>
-                <span class="close" onclick="closeSubProducts()">&times;</span>
-            </div>
-            <div class="modal-body">
-                <div class="sub-products-grid">
-                    ${product.subProducts.map(subProduct => {
-                        const discountedPrice = subProduct.price - (subProduct.price * product.discount / 100);
-                        return `
-                            <div class="sub-product-card" onclick="addSubProductToCart('${product.id}', '${subProduct.id}')">
-                                <h5>${subProduct.name}</h5>
-                                <p class="sub-product-desc">${subProduct.description}</p>
-                                <p class="sub-product-price">
-                                    Rs. ${discountedPrice.toLocaleString()}
-                                    ${product.discount > 0 ? `<span class="original-price">Rs. ${subProduct.price.toLocaleString()}</span>` : ''}
-                                </p>
-                            </div>
-                        `;
-                    }).join('')}
-                </div>
-            </div>
-        </div>
-    `;
-    
-    document.body.appendChild(modal);
-    modal.style.display = 'block';
-}
-
-function closeSubProducts() {
-    const modal = document.getElementById('sub-products-modal');
-    if (modal) {
-        modal.remove();
-    }
-}
-
-function addSubProductToCart(productId, subProductId) {
-    const product = products.find(p => p.id === productId);
-    const subProduct = product && product.subProducts ? product.subProducts.find(sp => sp.id === subProductId) : null;
-    
-    if (!product || !subProduct) return;
-    
-    const discountedPrice = subProduct.price - (subProduct.price * product.discount / 100);
-    const existingItem = cart.find(item => item.id === subProductId);
-    
-    if (existingItem) {
-        existingItem.quantity += 1;
-    } else {
-        cart.push({
-            id: subProductId,
-            name: `${product.name} - ${subProduct.name}`,
-            price: discountedPrice,
-            image: product.image,
-            quantity: 1,
-            parentProduct: product.name
-        });
-    }
-    
-    updateCartCount();
-    closeSubProducts();
-    showNotification(`${subProduct.name} added to cart!`, 'success');
-}
-
-function addToCart(productId) {
-    const product = products.find(p => p.id === productId);
-    if (!product) return;
-    
-    const discountedPrice = product.basePrice - (product.basePrice * product.discount / 100);
+    // Check if the product is already in the cart
     const existingItem = cart.find(item => item.id === productId);
     
     if (existingItem) {
+        // If it exists, increment its quantity
         existingItem.quantity += 1;
     } else {
+        // If it doesn't exist, add it to the cart with quantity 1 and calculate its final price
         cart.push({
-            id: productId,
-            name: product.name,
-            price: discountedPrice,
-            image: product.image,
-            quantity: 1
+            ...product, // Spread operator copies all properties of the product
+            quantity: 1,
+            finalPrice: productsDatabase.calculatePrice(product) // Store the final price per item
         });
     }
     
-    updateCartCount();
-    showNotification('Added to cart!', 'success');
+    // Save the updated cart to local storage
+    saveCartToStorage();
+    // Update the cart count displayed in the header
+    updateCartDisplay();
+    // Show a notification to the user
+    showNotification(`${product.name} added to cart!`);
 }
 
+// Direct purchase functionality: Adds to cart and immediately opens the cart
 function buyNow(productId) {
-    addToCart(productId);
-    setTimeout(() => showCart(), 100);
-}
-
-function removeFromCart(itemId) {
-    cart = cart.filter(item => item.id !== itemId);
-    updateCartCount();
-    updateCartModal();
-    showNotification('Removed from cart', 'info');
-}
-
-function updateCartCount() {
-    const count = cart.reduce((total, item) => total + item.quantity, 0);
-    const el = document.getElementById('cart-count');
-    if (el) el.textContent = count;
-}
-
-function calculateTotal() {
-    return cart.reduce((total, item) => total + (item.price * item.quantity), 0);
-}
-
-function showCart() {
-    updateCartModal();
-    const modal = document.getElementById('cart-modal');
-    if (modal) modal.style.display = 'block';
-}
-
-function closeCart() {
-    const modal = document.getElementById('cart-modal');
-    if (modal) modal.style.display = 'none';
-}
-
-function updateCartModal() {
-    const cartItems = document.getElementById('cart-items');
-    const cartTotal = document.getElementById('cart-total');
-    if (!cartItems || !cartTotal) return;
-    
-    if (cart.length === 0) {
-        cartItems.innerHTML = '<p style="text-align: center; color: #64748b; padding: 40px;">Your cart is empty</p>';
-        cartTotal.textContent = '0';
+    // Special handling for Roblox Gamepass
+    if (productId === '8') {
+        openAmountModal();
         return;
     }
     
-    cartItems.innerHTML = '';
-    cart.forEach(item => {
-        const cartItem = document.createElement('div');
-        cartItem.className = 'cart-item';
-        cartItem.innerHTML = `
-            <div class="cart-item-info">
-                <img src="${item.image}" alt="${item.name}" class="cart-item-image">
-                <div class="cart-item-details">
-                    <h5>${item.name}</h5>
-                    <p>Rs. ${item.price.toLocaleString()}</p>
-                    <span class="cart-item-quantity">Qty: ${item.quantity}</span>
-                </div>
-            </div>
-            <span class="remove-item" onclick="removeFromCart('${item.id}')">
-                <i class="fas fa-times"></i>
-            </span>
-        `;
-        cartItems.appendChild(cartItem);
-    });
-    
-    cartTotal.textContent = calculateTotal().toLocaleString();
+    addToCart(productId); // First, add the item to the cart
+    openCart(); // Then, open the cart modal
 }
 
-function proceedToOrder() {
+// Amount modal functions for Roblox Gamepass
+function openAmountModal() {
+    // Create the modal if it doesn't exist
+    if (!document.getElementById('amountModal')) {
+        createAmountModal();
+    }
+    document.getElementById('amountModal').style.display = 'block';
+    document.body.style.overflow = 'hidden';
+    
+    // Focus on the input field
+    const input = document.getElementById('robuxAmount');
+    input.focus();
+    input.value = ''; // Clear any previous value
+    updateCalculatedPrice(); // Update the calculated price display
+}
+
+function closeAmountModal() {
+    const modal = document.getElementById('amountModal');
+    if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+}
+
+function createAmountModal() {
+    const modalHTML = `
+        <div class="amount-modal" id="amountModal">
+            <div class="amount-content">
+                <div class="amount-header">
+                    <h3>Roblox Gamepass</h3>
+                    <button class="close-amount" onclick="closeAmountModal()">&times;</button>
+                </div>
+                <div class="amount-input-group">
+                    <label for="robuxAmount">Enter Robux Amount:</label>
+                    <input type="number" id="robuxAmount" class="amount-input" placeholder="Minimum 10 Robux" min="10" oninput="updateCalculatedPrice()">
+                </div>
+                <div class="conversion-info">
+                    <p>Conversion Rate: 1 Robux = 1.7 RS</p>
+                    <div class="calculated-price" id="calculatedPrice">Total: NPR 0</div>
+                </div>
+                <div class="amount-actions">
+                    <button class="amount-btn cancel-btn" onclick="closeAmountModal()">Cancel</button>
+                    <button class="amount-btn add-btn" onclick="addCustomRobux()" id="addRobuxBtn" disabled>Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    `;
+    document.body.insertAdjacentHTML('beforeend', modalHTML);
+}
+
+function updateCalculatedPrice() {
+    const input = document.getElementById('robuxAmount');
+    const calculatedPrice = document.getElementById('calculatedPrice');
+    const addBtn = document.getElementById('addRobuxBtn');
+    
+    const robuxAmount = parseInt(input.value) || 0;
+    const priceInRS = robuxAmount * 1.7;
+    
+    if (robuxAmount >= 10) {
+        calculatedPrice.textContent = `Total: NPR ${Math.round(priceInRS)}`;
+        calculatedPrice.style.color = '#ff0000';
+        addBtn.disabled = false;
+        addBtn.style.opacity = '1';
+        input.style.borderColor = '#ff0000';
+    } else {
+        calculatedPrice.textContent = robuxAmount > 0 ? 'Minimum 10 Robux required' : 'Total: NPR 0';
+        calculatedPrice.style.color = '#888';
+        addBtn.disabled = true;
+        addBtn.style.opacity = '0.5';
+        input.style.borderColor = robuxAmount > 0 && robuxAmount < 10 ? '#ff4444' : '#333333';
+    }
+}
+
+function addCustomRobux() {
+    const robuxAmount = parseInt(document.getElementById('robuxAmount').value);
+    
+    if (robuxAmount < 10) {
+        showNotification('Minimum 10 Robux required!', 'error');
+        return;
+    }
+    
+    const priceInRS = Math.round(robuxAmount * 1.7);
+    
+    // Create a custom cart item for the Roblox Gamepass
+    const customItem = {
+        id: '8-custom-' + Date.now(), // Unique ID for this custom item
+        parentId: '8', // Reference to the original product
+        name: `Roblox Gamepass - ${robuxAmount} Robux`,
+        basePrice: priceInRS,
+        finalPrice: priceInRS,
+        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Robux_2019_Logo_gold.svg/1024px-Robux_2019_Logo_gold.svg.png?20201227051146',
+        category: 'Game Currency',
+        platform: 'PC/Mobile',
+        description: `${robuxAmount} Robux at 1.7 RS per Robux`,
+        quantity: 1,
+        robuxAmount: robuxAmount // Store the robux amount for reference
+    };
+    
+    // Add to cart
+    cart.push(customItem);
+    
+    // Save and update displays
+    saveCartToStorage();
+    updateCartDisplay();
+    
+    // Close modal and show notification
+    closeAmountModal();
+    showNotification(`${robuxAmount} Robux added to cart!`);
+}
+
+// Cart modal functions: Control the visibility and content of the cart modal
+function openCart() {
+    updateCartModal(); // Ensure the cart modal content is up-to-date
+    document.getElementById('cartModal').style.display = 'block'; // Show the cart modal
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling when modal is open
+}
+
+function closeCart() {
+    document.getElementById('cartModal').style.display = 'none'; // Hide the cart modal
+    document.body.style.overflow = 'auto'; // Restore background scrolling
+}
+
+// Update the cart count display in the header/navigation
+function updateCartDisplay() {
+    const cartCount = document.getElementById('cartCount');
+    // Calculate the total number of items (sum of quantities) in the cart
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    cartCount.textContent = totalItems; // Update the text content of the cart count element
+}
+
+// Update the content of the cart modal with current cart items
+function updateCartModal() {
+    const cartItems = document.getElementById('cartItems'); // Container for cart items
+    const cartTotal = document.getElementById('cartTotal'); // Element to display the total price
+    
+    // If the cart is empty, display a message
+    if (cart.length === 0) {
+        cartItems.innerHTML = '<div class="empty-cart"><h3>Your cart is empty</h3><p>Add some awesome products to get started!</p></div>';
+        cartTotal.textContent = '0'; // Set total to 0
+        return;
+    }
+    
+    let total = 0; // Initialize total price
+    // Map each item in the cart to its HTML representation
+    cartItems.innerHTML = cart.map(item => {
+        const itemTotal = item.finalPrice * item.quantity; // Calculate total for this item
+        total += itemTotal; // Add to the overall total
+        
+        return `
+            <div class="cart-item">
+                <div class="cart-item-info">
+                    <h4>${item.name}</h4>
+                    <p style="color: #888;">Quantity: ${item.quantity}</p>
+                    <div style="margin-top: 5px;">
+                        <button onclick="updateQuantity('${item.id}', -1)" style="background: #ff0000; border: none; color: white; padding: 5px 10px; border-radius: 3px; cursor: pointer; margin-right: 5px;">-</button>
+                        <span style="margin: 0 10px;">${item.quantity}</span>
+                        <button onclick="updateQuantity('${item.id}', 1)" style="background: #ff0000; border: none; color: white; padding: 5px 10px; border-radius: 3px; cursor: pointer; margin-left: 5px;">+</button>
+                        <button onclick="removeFromCart('${item.id}')" style="background: #666; border: none; color: white; padding: 5px 10px; border-radius: 3px; cursor: pointer; margin-left: 15px;">Remove</button>
+                    </div>
+                </div>
+                <div class="cart-item-price">NPR ${itemTotal}</div>
+            </div>
+        `;
+    }).join(''); // Join all item HTML strings
+    
+    cartTotal.textContent = total; // Update the total price display
+}
+
+// Update the quantity of an item in the cart
+function updateQuantity(productId, change) {
+    const item = cart.find(item => item.id === productId); // Find the item
+    if (!item) return;
+    
+    item.quantity += change; // Adjust the quantity
+    
+    // If quantity becomes zero or less, remove the item from the cart
+    if (item.quantity <= 0) {
+        removeFromCart(productId);
+        return;
+    }
+    
+    saveCartToStorage(); // Save the updated cart
+    updateCartModal(); // Refresh the cart modal display
+    updateCartDisplay(); // Refresh the cart count display
+}
+
+// Remove an item from the cart
+function removeFromCart(productId) {
+    cart = cart.filter(item => item.id !== productId); // Filter out the item to be removed
+    saveCartToStorage(); // Save the updated cart
+    updateCartModal(); // Refresh the cart modal display
+    updateCartDisplay(); // Refresh the cart count display
+}
+
+// Proceed to checkout: Show checkout summary and open checkout modal
+function proceedToCheckout() {
+    // Prevent checkout if cart is empty
     if (cart.length === 0) {
         showNotification('Your cart is empty!', 'error');
         return;
     }
     
-    closeCart();
-    updateOrderModal();
-    const modal = document.getElementById('order-modal');
-    if (modal) modal.style.display = 'block';
+    updateCheckoutSummary(); // Populate the checkout summary
+    closeCart(); // Close the cart modal
+    document.getElementById('checkoutModal').style.display = 'block'; // Open the checkout modal
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling
 }
 
-function closeOrder() {
-    const modal = document.getElementById('order-modal');
-    if (modal) modal.style.display = 'none';
+// Close the checkout modal
+function closeCheckout() {
+    document.getElementById('checkoutModal').style.display = 'none'; // Hide the checkout modal
+    document.body.style.overflow = 'auto'; // Restore background scrolling
 }
 
-function updateOrderModal() {
-    const orderItems = document.getElementById('order-items');
-    const orderTotal = document.getElementById('order-total');
-    if (!orderItems || !orderTotal) return;
+// Update the order summary displayed in the checkout modal
+function updateCheckoutSummary() {
+    const orderSummary = document.getElementById('orderSummary'); // Container for order items summary
+    const finalTotal = document.getElementById('finalTotal'); // Element for the final total price
     
-    orderItems.innerHTML = '';
-    cart.forEach(item => {
-        const orderItem = document.createElement('div');
-        orderItem.className = 'order-item';
-        orderItem.innerHTML = `
-            <span>${item.name} x${item.quantity}</span>
-            <span>Rs. ${(item.price * item.quantity).toLocaleString()}</span>
+    let total = 0; // Initialize total price
+    
+    // Map each item in the cart to a summary line
+    orderSummary.innerHTML = cart.map(item => {
+        const itemTotal = item.finalPrice * item.quantity; // Calculate total for this item
+        total += itemTotal; // Add to the overall total
+        
+        return `
+            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                <span>${item.name} (x${item.quantity})</span>
+                <span>NPR ${itemTotal}</span>
+            </div>
         `;
-        orderItems.appendChild(orderItem);
-    });
+    }).join(''); // Join all summary line HTML strings
     
-    orderTotal.textContent = calculateTotal().toLocaleString();
+    finalTotal.textContent = total; // Update the final total display
 }
 
-async function submitOrder() {
-    const name = (document.getElementById('name') || {}).value ? document.getElementById('name').value.trim() : '';
-    const phone = (document.getElementById('phone') || {}).value ? document.getElementById('phone').value.trim() : '';
-    const email = (document.getElementById('email') || {}).value ? document.getElementById('email').value.trim() : '';
-    const address = (document.getElementById('address') || {}).value ? document.getElementById('address').value.trim() : '';
-    const notes = (document.getElementById('notes') || {}).value ? document.getElementById('notes').value.trim() : '';
+// Handle the submission of the order form
+async function handleOrderSubmission(event) {
+    event.preventDefault(); // Prevent default form submission
     
-    if (!name || !phone || !address) {
+    const formData = new FormData(event.target); // Get form data
+    const orderData = { // Create an object with order details
+        fullName: formData.get('fullName'),
+        phoneNumber: formData.get('phoneNumber'),
+        email: formData.get('email'),
+        address: formData.get('address'),
+        notes: formData.get('notes')
+    };
+    
+    // Basic validation for required fields
+    if (!orderData.fullName || !orderData.phoneNumber || !orderData.address) {
         showNotification('Please fill in all required fields!', 'error');
         return;
     }
     
-    // Send to Discord webhook
-    await sendToDiscord(name, phone, email, address, notes);
-}
-
-async function sendToDiscord(name, phone, email, address, notes) {
-    const webhookUrl = 'https://discord.com/api/webhooks/1406851782096846910/npe0FHRlNnqEDQ-NUFssyMn9Y_rqDB_wPXompXYmXwFK6H4eoBwF7wHV6hAJ_-plYxYl';
-    
-    const orderSummary = cart.map(item => 
-        `• ${item.name} x${item.quantity} - Rs. ${(item.price * item.quantity).toLocaleString()}`
-    ).join('\n');
-    
-    const embed = {
-        title: '🎮 New Order - GamePort Nepal',
-        color: 0x10b981,
-        fields: [
-            { name: '👤 Customer', value: name, inline: true },
-            { name: '📞 Phone', value: phone, inline: true },
-            { name: '📧 Email', value: email || 'Not provided', inline: true },
-            { name: '📍 Address', value: address, inline: false },
-            { name: '🛒 Items', value: orderSummary, inline: false },
-            { name: '💰 Total', value: `Rs. ${calculateTotal().toLocaleString()}`, inline: true },
-        ],
-        timestamp: new Date().toISOString(),
-        footer: { text: 'GamePort Nepal • Order Management' }
-    };
-    
-    if (notes) {
-        embed.fields.push({ name: '📝 Notes', value: notes, inline: false });
-    }
+    // Disable the submit button and change its text to indicate submission
+    const submitButton = event.target.querySelector('.send-order-btn');
+    submitButton.disabled = true;
+    submitButton.textContent = 'Sending Order...';
     
     try {
-        const response = await fetch(webhookUrl, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ embeds: [embed] })
-        });
+        // Attempt to send the order details to the Discord webhook
+        await sendOrderToDiscord(orderData);
         
-        if (response.ok) {
-            // Clear cart and close modals
-            cart = [];
-            updateCartCount();
-            closeOrder();
-            const form = document.getElementById('order-form');
-            if (form) form.reset();
-            
-            showNotification('Order sent successfully! Redirecting to Discord...', 'success');
-            setTimeout(() => {
-                window.open('https://discord.gg/XjuaQBFD8W', '_blank');
-            }, 2000);
-        } else {
-            throw new Error('Failed to send to Discord');
-        }
-    } catch (error) {
-        console.error('Error sending to Discord:', error);
-        showNotification('Order failed, but redirecting to Discord for manual order...', 'info');
+        // If successful, clear the cart and related UI elements
+        cart = [];
+        saveCartToStorage(); // Clear cart from local storage
+        updateCartDisplay(); // Update header cart count
+        closeCheckout(); // Close the checkout modal
+        
+        // Notify the user and redirect to Discord after a delay
+        showNotification('Order sent successfully! Redirecting to Discord...', 'success');
         setTimeout(() => {
-            window.open('https://discord.gg/XjuaQBFD8W', '_blank');
-        }, 2000);
+            window.open('https://discord.gg/XjuaQBFD8W', '_blank'); // Open Discord link in a new tab
+        }, 2000); // Delay of 2 seconds
+        
+    } catch (error) {
+        // If an error occurs during submission
+        console.error('Error sending order:', error);
+        showNotification('Error sending order. Please try again.', 'error');
+    } finally {
+        // Re-enable the submit button regardless of success or failure
+        submitButton.disabled = false;
+        submitButton.textContent = 'Send Order via Discord';
     }
 }
 
-function showNotification(message, type) {
-    // Create a styled notification (slide-in/out)
+// Send the order details to the configured Discord webhook
+async function sendOrderToDiscord(orderData) {
+    // Calculate the total price of the order
+    const total = cart.reduce((sum, item) => sum + (item.finalPrice * item.quantity), 0);
+    
+    // Format the order items into a string for the Discord embed
+    const orderItems = cart.map(item => 
+        `${item.name} - Quantity: ${item.quantity} - NPR ${item.finalPrice * item.quantity}`
+    ).join('\n');
+    
+    // Construct the Discord embed message object
+    const embedMessage = {
+        embeds: [{
+            title: "🎮 New Order from GamePort Nepal", // Title of the embed
+            color: 0xFF0000, // Red color for the embed
+            fields: [ // Array of fields to display in the embed
+                { name: "👤 Customer Name", value: orderData.fullName, inline: true }, // Customer's full name
+                { name: "📱 Phone Number", value: orderData.phoneNumber, inline: true }, // Customer's phone number
+                { name: "📧 Email", value: orderData.email || "Not provided", inline: true }, // Customer's email (optional)
+                { name: "📍 Delivery Address", value: orderData.address, inline: false }, // Customer's address
+                { name: "📦 Order Items", value: orderItems, inline: false }, // List of ordered items
+                { name: "💰 Total Amount", value: `NPR ${total}`, inline: true }, // Total order amount
+                { name: "📝 Notes", value: orderData.notes || "None", inline: false } // Any special notes
+            ],
+            timestamp: new Date().toISOString(), // Timestamp of the order
+            footer: { text: "GamePort Nepal Order System" } // Footer text
+        }]
+    };
+    
+    // Make a POST request to the Discord webhook URL
+    const response = await fetch(DISCORD_WEBHOOK_URL, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json', // Specify content type as JSON
+        },
+        body: JSON.stringify(embedMessage) // Send the embed message as a JSON string
+    });
+    
+    // If the response from the server is not OK (e.g., error status code)
+    if (!response.ok) {
+        throw new Error('Failed to send order to Discord'); // Throw an error
+    }
+}
+
+// Local storage functions: For persisting the cart across sessions
+function saveCartToStorage() {
+    localStorage.setItem('gameport_cart', JSON.stringify(cart)); // Save the cart array as a JSON string
+}
+
+function loadCartFromStorage() {
+    const savedCart = localStorage.getItem('gameport_cart'); // Retrieve the cart from local storage
+    if (savedCart) {
+        cart = JSON.parse(savedCart); // Parse the JSON string back into an array and assign to cart
+    }
+}
+
+// Utility functions: Helper functions for common tasks
+
+// Debounce: Delays the execution of a function until after a specified period of inactivity
+function debounce(func, wait) {
+    let timeout; // Variable to hold the timeout ID
+    return function executedFunction(...args) { // Returns a new function that wraps the original
+        const later = () => { // Function to be executed after the delay
+            clearTimeout(timeout); // Clear the previous timeout
+            func(...args); // Call the original function with its arguments
+        };
+        clearTimeout(timeout); // Clear the existing timeout (if any)
+        timeout = setTimeout(later, wait); // Set a new timeout
+    };
+}
+
+// Show Notification: Displays a temporary message to the user
+function showNotification(message, type = 'success') {
+    // Create a new div element for the notification
     const notification = document.createElement('div');
+    // Apply CSS styles for positioning, appearance, and animation
     notification.style.cssText = `
         position: fixed;
         top: 20px;
         right: 20px;
-        padding: 15px 25px;
-        background: ${type === 'success' ? '#10b981' : type === 'error' ? '#ef4444' : '#06b6d4'};
+        background: ${type === 'error' ? '#ff4444' : '#00aa00'}; /* Red for error, green for success */
         color: white;
+        padding: 15px 20px;
         border-radius: 8px;
-        z-index: 10000;
+        z-index: 3000; /* Ensure it's on top of other elements */
         font-weight: 600;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-        transform: translateX(100%);
-        transition: transform 0.3s ease;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        transform: translateX(100%); /* Start off-screen to the right */
+        transition: transform 0.3s ease; /* Smooth transition for sliding effect */
     `;
-    notification.textContent = message;
+    notification.textContent = message; // Set the message text
     
-    document.body.appendChild(notification);
+    document.body.appendChild(notification); // Add the notification to the DOM
     
-    setTimeout(() => notification.style.transform = 'translateX(0)', 100);
-    
+    // Slide in animation
     setTimeout(() => {
-        notification.style.transform = 'translateX(100%)';
-        setTimeout(() => notification.remove(), 300);
-    }, 3000);
+        notification.style.transform = 'translateX(0)'; // Move it into view
+    }, 100); // Slight delay to ensure initial styles are applied
+    
+    // Remove notification after 3 seconds
+    setTimeout(() => {
+        notification.style.transform = 'translateX(100%)'; // Slide it back out
+        // Wait for the slide-out transition to complete before removing from DOM
+        setTimeout(() => {
+            document.body.removeChild(notification);
+        }, 300); // Match the transition duration
+    }, 3000); // Total duration including animation
 }
 
-// Close modals when clicking outside
-window.onclick = function(event) {
-    const cartModal = document.getElementById('cart-modal');
-    const orderModal = document.getElementById('order-modal');
-    const adminLoginModal = document.getElementById('admin-login-modal');
-    const adminPanelModal = document.getElementById('admin-panel-modal');
-    const subProductsModal = document.getElementById('sub-products-modal');
-    
-    if (event.target === cartModal) closeCart();
-    if (event.target === orderModal) closeOrder();
-    if (event.target === adminLoginModal) closeAdminLogin();
-    if (event.target === adminPanelModal) closeAdminPanel();
-    if (event.target === subProductsModal) closeSubProducts();
-};
+// Make specific functions globally available so they can be called from inline HTML attributes (e.g., onclick)
+window.addToCart = addToCart;
+window.buyNow = buyNow;
+window.openCart = openCart;
+window.closeCart = closeCart;
+window.closeCheckout = closeCheckout;
+window.proceedToCheckout = proceedToCheckout;
+window.updateQuantity = updateQuantity;
+window.removeFromCart = removeFromCart;
+window.openAmountModal = openAmountModal;
+window.closeAmountModal = closeAmountModal;
+window.updateCalculatedPrice = updateCalculatedPrice;
+window.addCustomRobux = addCustomRobux;
