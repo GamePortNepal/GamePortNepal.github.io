@@ -386,7 +386,7 @@ function handleOrderSubmission(event) {
             
             // Redirect to Discord after a short delay
             setTimeout(() => {
-                window.open('https://discord.gg/KwCgTveabA', '_blank');
+                window.open('https://discord.gg/Ve6fa7HfjE', '_blank');
             }, 2000);
         })
         .catch(error => {
