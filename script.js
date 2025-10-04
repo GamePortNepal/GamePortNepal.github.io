@@ -3,7 +3,7 @@ let cart = [];
 let currentAmountModalProductId = null;
 
 // Discord webhook URL
-const DISCORD_WEBHOOK_URL = 'https://discord.com/api/webhooks/1331661664654995476/bYhELKWspcO6yH-9otZ2EcQGqpJ9kVnkw5cD1Qx1M8ySEkdOeNfHy4nErJVG5HgmRdeE';
+const DISCORD_WEBHOOK_URL = 'https://discord.com/api/webhooks/1423936861637709864/ui-2q6ne2O0rbdcIt9eSFCxAnBXbyD4sj1wkPUGHuOxyjKshRPat3L0eEvtuoNx_MFzg';
 
 // Function to create interspersed product grid with product banners
 function createInterspersedGrid(products, banners) {
